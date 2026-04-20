@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useInView } from "../hooks/useInView";
@@ -7,9 +8,61 @@ import { useInView } from "../hooks/useInView";
 const stats = [
   { value: "3+", label: "Companies" },
   { value: "4+", label: "Projects" },
-  { value: "2", label: "Certifications" },
+  { value: "5+", label: "Certifications" },
   { value: "2027", label: "Graduating" },
 ];
+
+function AnimatedStat({
+  value,
+  label,
+  inView,
+  delay,
+}: {
+  value: string;
+  label: string;
+  inView: boolean;
+  delay: number;
+}) {
+  const numericValue = parseInt(value);
+  const suffix = value.replace(/[0-9]/g, "");
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const startTimer = setTimeout(() => {
+      const duration = 1200;
+      const fps = 60;
+      const totalFrames = Math.round((duration / 1000) * fps);
+      let frame = 0;
+      const interval = setInterval(() => {
+        frame++;
+        const progress = frame / totalFrames;
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(eased * numericValue));
+        if (frame >= totalFrames) {
+          setCount(numericValue);
+          clearInterval(interval);
+        }
+      }, 1000 / fps);
+      return () => clearInterval(interval);
+    }, delay * 1000);
+    return () => clearTimeout(startTimer);
+  }, [inView, numericValue, delay]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay, duration: 0.5 }}
+      className="text-center p-3 rounded-xl border border-white/5 bg-white/[0.02]"
+    >
+      <p className="font-sora text-xl font-bold text-cyan-400">
+        {count}{suffix}
+      </p>
+      <p className="font-dm text-xs text-slate-500 mt-0.5">{label}</p>
+    </motion.div>
+  );
+}
 
 export default function About() {
   const { ref, inView } = useInView(0.2);
@@ -93,16 +146,13 @@ export default function About() {
             {/* Stats grid */}
             <div className="grid grid-cols-4 gap-4">
               {stats.map((stat, i) => (
-                <motion.div
+                <AnimatedStat
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
-                  className="text-center p-3 rounded-xl border border-white/5 bg-white/[0.02]"
-                >
-                  <p className="font-sora text-xl font-bold text-cyan-400">{stat.value}</p>
-                  <p className="font-dm text-xs text-slate-500 mt-0.5">{stat.label}</p>
-                </motion.div>
+                  value={stat.value}
+                  label={stat.label}
+                  inView={inView}
+                  delay={0.4 + i * 0.1}
+                />
               ))}
             </div>
           </motion.div>

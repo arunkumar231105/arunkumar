@@ -11,6 +11,7 @@ const certifications = [
     color: "from-red-500/20 to-red-500/5",
     border: "border-red-500/20",
     iconBg: "bg-red-500/10 text-red-400",
+    verifyUrl: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=",
   },
   {
     name: "Oracle Cloud Infrastructure Certified AI Foundations Associate",
@@ -19,6 +20,7 @@ const certifications = [
     color: "from-red-500/20 to-red-500/5",
     border: "border-red-500/20",
     iconBg: "bg-red-500/10 text-red-400",
+    verifyUrl: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=",
   },
   {
     name: "Google Prompting Essentials",
@@ -27,6 +29,7 @@ const certifications = [
     color: "from-blue-500/20 to-blue-500/5",
     border: "border-blue-500/20",
     iconBg: "bg-blue-500/10 text-blue-400",
+    verifyUrl: "https://grow.google/certificates/",
   },
   {
     name: "AWS Educate: Introduction to Cloud 101",
@@ -35,6 +38,7 @@ const certifications = [
     color: "from-yellow-500/20 to-yellow-500/5",
     border: "border-yellow-500/20",
     iconBg: "bg-yellow-500/10 text-yellow-400",
+    verifyUrl: "https://aws.amazon.com/education/awseducate/",
   },
   {
     name: "Object Oriented Programming in Java",
@@ -43,14 +47,7 @@ const certifications = [
     color: "from-orange-500/20 to-orange-500/5",
     border: "border-orange-500/20",
     iconBg: "bg-orange-500/10 text-orange-400",
-  },
-  {
-    name: "Getting Started with Microsoft Word",
-    issuer: "Microsoft / Online",
-    icon: "M",
-    color: "from-indigo-500/20 to-indigo-500/5",
-    border: "border-indigo-500/20",
-    iconBg: "bg-indigo-500/10 text-indigo-400",
+    verifyUrl: "https://www.coursera.org/",
   },
 ];
 
@@ -77,17 +74,20 @@ export default function Certifications() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {certifications.map((cert, i) => (
-            <motion.div
+            <motion.a
               key={i}
+              href={cert.verifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative p-5 rounded-2xl border ${cert.border} bg-gradient-to-br ${cert.color} hover:scale-[1.02] transition-all duration-300 group`}
+              className={`relative p-5 rounded-2xl border ${cert.border} bg-gradient-to-br ${cert.color} hover:scale-[1.02] transition-all duration-300 group cursor-pointer block`}
             >
-              {/* Verified badge */}
+              {/* Verify link icon */}
               <div className="absolute top-4 right-4 text-cyan-400/40 group-hover:text-cyan-400/70 transition-colors">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </div>
 
@@ -106,7 +106,7 @@ export default function Certifications() {
                   <p className="font-dm text-xs text-slate-500">{cert.issuer}</p>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

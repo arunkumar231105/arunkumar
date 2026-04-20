@@ -2,36 +2,37 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
+import { SiPython, SiPandas, SiFastapi, SiSnowflake, SiDocker, SiGit } from "react-icons/si";
 
 const skillGroups = [
   {
     category: "Languages",
-    icon: "⌨",
+    Icon: SiPython,
     skills: ["Python", "SQL", "Java", "C/C++", "HTML", "CSS", "TypeScript"],
   },
   {
     category: "Data & Scraping",
-    icon: "🗄",
+    Icon: SiPandas,
     skills: ["Pandas", "NumPy", "Selenium", "BeautifulSoup", "Apify", "Playwright", "Metabase"],
   },
   {
     category: "Frameworks",
-    icon: "🔧",
+    Icon: SiFastapi,
     skills: ["FastAPI", "Node.js", "React", "Next.js", "Express"],
   },
   {
     category: "Databases",
-    icon: "💾",
+    Icon: SiSnowflake,
     skills: ["MySQL", "SQL Server", "Snowflake", "PostgreSQL", "Firebase"],
   },
   {
     category: "Cloud & DevOps",
-    icon: "☁",
+    Icon: SiDocker,
     skills: ["AWS S3", "EC2", "Lambda", "SQS", "SNS", "Glue", "Athena", "QuickSight", "Docker", "Redis"],
   },
   {
     category: "Tools & Platforms",
-    icon: "🛠",
+    Icon: SiGit,
     skills: ["Git", "GitHub", "VS Code", "Vercel", "Figma", "n8n", "Apache Airflow"],
   },
 ];
@@ -68,9 +69,9 @@ export default function Skills() {
             >
               {/* Category header */}
               <div className="flex items-center gap-3 mb-5">
-                <span className="text-xl" aria-hidden>
-                  {group.icon}
-                </span>
+                <div className="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center flex-shrink-0">
+                  <group.Icon className="w-4 h-4 text-cyan-400" />
+                </div>
                 <h3 className="font-sora text-sm font-semibold text-white uppercase tracking-wider">
                   {group.category}
                 </h3>

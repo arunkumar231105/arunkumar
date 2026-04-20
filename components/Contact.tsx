@@ -47,23 +47,41 @@ const contactLinks = [
   },
 ];
 
+// Replace YOUR_FORM_ID with your ID from https://formspree.io
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+type Status = "idle" | "loading" | "success" | "error";
+
 export default function Contact() {
   const { ref, inView } = useInView(0.15);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Opens default mail client with pre-filled content
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:arunkumarjuswani12@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setStatus("loading");
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 4000);
+      }
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
@@ -177,15 +195,23 @@ export default function Contact() {
                 className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white font-dm text-sm placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:bg-white/[0.06] transition-all resize-none"
               />
             </div>
+            {status === "success" && (
+              <div className="w-full py-3 px-4 rounded-xl bg-green-400/10 border border-green-400/30 text-green-400 font-dm text-sm text-center">
+                Message sent! I&apos;ll get back to you soon.
+              </div>
+            )}
+            {status === "error" && (
+              <div className="w-full py-3 px-4 rounded-xl bg-red-400/10 border border-red-400/30 text-red-400 font-dm text-sm text-center">
+                Something went wrong. Please try again or email me directly.
+              </div>
+            )}
             <button
               type="submit"
-              className="w-full py-3.5 rounded-xl bg-cyan-400 text-[#0a0f1e] font-sora font-bold text-sm hover:bg-cyan-300 transition-all duration-200 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/30 hover:-translate-y-0.5"
+              disabled={status === "loading" || status === "success"}
+              className="w-full py-3.5 rounded-xl bg-cyan-400 text-[#0a0f1e] font-sora font-bold text-sm hover:bg-cyan-300 transition-all duration-200 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/30 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
             >
-              {submitted ? "Opening Email Client..." : "Send Message"}
+              {status === "loading" ? "Sending..." : status === "success" ? "Sent!" : "Send Message"}
             </button>
-            <p className="text-xs text-slate-600 font-dm text-center">
-              This will open your default email client.
-            </p>
           </motion.form>
         </div>
       </div>

@@ -68,6 +68,14 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
+        {/* Available badge */}
+        <motion.div variants={itemVariants} className="flex justify-center mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-400/30 bg-green-400/10 text-green-400 text-xs font-dm font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            Available for Remote Work
+          </span>
+        </motion.div>
+
         {/* Eyebrow */}
         <motion.p
           variants={itemVariants}

@@ -14,14 +14,25 @@ export default function Footer() {
             Arun Kumar<span className="text-cyan-400">.</span>
           </p>
 
-          {/* Center — built with */}
-          <p className="font-dm text-slate-600 text-xs text-center">
-            Built with{" "}
-            <span className="text-slate-400">Next.js</span> &{" "}
-            <span className="text-slate-400">Tailwind CSS</span>
-            {" "}&mdash;{" "}
-            <span className="text-slate-400">{year}</span>
-          </p>
+          {/* Center — nav + copyright */}
+          <div className="flex flex-col items-center gap-2">
+            <div className="flex items-center gap-5 text-xs font-dm text-slate-500">
+              {["About", "Projects", "Skills", "Contact"].map((s) => (
+                <button
+                  key={s}
+                  onClick={() =>
+                    document.getElementById(s.toLowerCase())?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="hover:text-cyan-400 transition-colors"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+            <p className="font-dm text-slate-600 text-xs text-center">
+              &copy; {year} Arun Kumar. All rights reserved.
+            </p>
+          </div>
 
           {/* Right — social icons */}
           <div className="flex items-center gap-4">
