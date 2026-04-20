@@ -9,6 +9,7 @@ import Certifications from "../components/Certifications";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import ScrollProgress from "../components/ScrollProgress";
+import ArunGPT from "../components/ArunGPT";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Certifications />
       <Contact />
       <Footer />
+      <ArunGPT />
     </main>
   );
 }

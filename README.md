@@ -13,6 +13,23 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## ArunGPT
+
+ArunGPT is a floating chatbot assistant integrated into the portfolio UI.
+
+- Frontend widget: `components/ArunGPT.tsx`
+- Backend route: `app/api/arun-gpt/route.ts`
+- Environment variable: `GROQ_API_KEY`
+
+Create `/.env.local` from `/.env.example`, set your Groq key there, and restart the dev server after any env change.
+
+The chatbot uses Groq's OpenAI-compatible chat completions endpoint:
+
+- `POST https://api.groq.com/openai/v1/chat/completions`
+- Model: `openai/gpt-oss-20b`
+
+The API key is used only on the server and is never exposed to the browser.
+
 ## Build & Deploy
 
 ```bash
