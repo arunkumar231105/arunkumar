@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import ParticleCanvas from "./ParticleCanvas";
 
 const ROLES = ["Data Engineer", "Backend Developer", "AI Builder", "ETL Architect"];
@@ -46,24 +46,57 @@ const itemVariants = {
 
 export default function Hero() {
   const role = useTypewriter(ROLES);
+  const heroRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Background parallax — moves slower than scroll (depth layer)
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
+
+  // Glow blob parallax — even slower
+  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
+
+  // Content floats up as hero exits
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+
+  // Spring-smooth the transforms for organic feel
+  const bgYSpring = useSpring(bgY, { stiffness: 60, damping: 20 });
+  const contentYSpring = useSpring(contentY, { stiffness: 80, damping: 25 });
 
   return (
     <section
+      ref={heroRef}
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0f1e]"
     >
-      {/* Particle network background */}
-      <ParticleCanvas />
+      {/* Particle network — parallax layer (slowest) */}
+      <motion.div style={{ y: bgYSpring }} className="absolute inset-0">
+        <ParticleCanvas />
+      </motion.div>
 
-      {/* Grid dot overlay */}
-      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
-
-      {/* Gradient glow behind heading */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-cyan-400/5 blur-[100px] pointer-events-none" />
-
-      {/* Content */}
+      {/* Grid dot overlay — parallax layer */}
       <motion.div
+        style={{ y: bgYSpring }}
+        className="absolute inset-0 grid-bg opacity-30 pointer-events-none"
+      />
+
+      {/* Gradient glow — mid parallax */}
+      <motion.div
+        style={{ y: glowY }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-cyan-400/5 blur-[120px] pointer-events-none"
+      />
+
+      {/* Content — foreground (moves up fastest as hero exits) */}
+      <motion.div
+        style={{ y: contentYSpring, opacity: contentOpacity }}
         className="relative z-10 text-center px-6 max-w-4xl mx-auto"
+      >
+      <motion.div
+        className="w-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -123,9 +156,10 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <button
-            onClick={() =>
-              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => {
+              const el = document.getElementById("projects");
+              if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+            }}
             className="px-8 py-3.5 rounded-xl bg-cyan-400 text-[#0a0f1e] font-sora font-bold text-sm hover:bg-cyan-300 transition-all duration-200 shadow-lg shadow-cyan-400/25 hover:shadow-cyan-400/40 hover:-translate-y-0.5"
           >
             View My Work
@@ -181,13 +215,15 @@ export default function Hero() {
           </a>
         </motion.div>
       </motion.div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style={{ opacity: contentOpacity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
       >
         <span className="text-slate-600 text-xs font-dm tracking-widest uppercase">Scroll</span>
         <motion.div

@@ -144,7 +144,7 @@ export default function About() {
             </p>
 
             {/* Stats grid */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {stats.map((stat, i) => (
                 <AnimatedStat
                   key={stat.label}

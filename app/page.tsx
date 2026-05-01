@@ -3,7 +3,9 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
+import CaseStudies from "../components/CaseStudies";
 import Testimonials from "../components/Testimonials";
+import CoreExpertise from "../components/CoreExpertise";
 import Skills from "../components/Skills";
 import Certifications from "../components/Certifications";
 import Contact from "../components/Contact";
@@ -20,7 +22,9 @@ export default function Home() {
       <About />
       <Experience />
       <Projects />
+      <CaseStudies />
       <Testimonials />
+      <CoreExpertise />
       <Skills />
       <Certifications />
       <Contact />

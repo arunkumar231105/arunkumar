@@ -16,13 +16,14 @@ export default function Footer() {
 
           {/* Center — nav + copyright */}
           <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center gap-5 text-xs font-dm text-slate-500">
+            <div className="flex flex-wrap justify-center items-center gap-4 text-xs font-dm text-slate-500">
               {["About", "Projects", "Skills", "Contact"].map((s) => (
                 <button
                   key={s}
-                  onClick={() =>
-                    document.getElementById(s.toLowerCase())?.scrollIntoView({ behavior: "smooth" })
-                  }
+                  onClick={() => {
+                    const el = document.getElementById(s.toLowerCase());
+                    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+                  }}
                   className="hover:text-cyan-400 transition-colors"
                 >
                   {s}

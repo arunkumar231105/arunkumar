@@ -412,8 +412,10 @@ export default function ArunGPT() {
         className={styles.launcher}
         aria-label={isOpen ? "Close ArunGPT" : "Open ArunGPT"}
       >
+        {!isOpen && <span className={styles.launcherRing} />}
+        {!isOpen && <span className={styles.launcherRing2} />}
         <HiOutlineChatBubbleLeftRight size={24} />
-        <span className={styles.launcherTooltip}>ArunGPT</span>
+        <span className={styles.launcherTooltip}>Chat with ArunGPT</span>
       </motion.button>
     </div>
   );

@@ -11,8 +11,7 @@ const projects = [
       "Production-style ETL DAG that detects CSV files in S3, auto-creates the Snowflake table schema, and loads data using COPY INTO. Includes SMTP email alerts and robust Sensors/Operators.",
     tech: ["Apache Airflow", "AWS S3", "Snowflake", "Python", "SMTP"],
     github: "https://github.com/arunkumar231105",
-    demo: null,
-    highlight: true,
+    demo: null as string | null,
   },
   {
     name: "Real-Time Chat Application",
@@ -21,8 +20,7 @@ const projects = [
       "Full-featured chat app with one-to-one and group conversations. Built on the MERN stack with Socket.IO for instant message delivery and a fully responsive UI.",
     tech: ["MongoDB", "Express", "React", "Node.js", "Socket.IO"],
     github: "https://github.com/arunkumar231105",
-    demo: null,
-    highlight: false,
+    demo: null as string | null,
   },
   {
     name: "AI Thief Detection System",
@@ -31,8 +29,7 @@ const projects = [
       "Browser-based real-time surveillance system that detects humans via webcam using TensorFlow.js — no server required. Optimized for low-latency inference in the browser.",
     tech: ["Next.js", "TensorFlow.js", "WebRTC", "TypeScript"],
     github: "https://github.com/arunkumar231105",
-    demo: null,
-    highlight: false,
+    demo: null as string | null,
   },
   {
     name: "Banggood E-Commerce Pipeline",
@@ -41,8 +38,7 @@ const projects = [
       "Full ETL pipeline that scrapes 10k+ product records from Banggood using Selenium. Implements anti-blocking mechanisms, data cleaning with Pandas, and loads into structured SQL schema.",
     tech: ["Python", "Selenium", "Pandas", "MySQL", "ETL"],
     github: "https://github.com/arunkumar231105",
-    demo: null,
-    highlight: false,
+    demo: null as string | null,
   },
 ];
 
@@ -85,7 +81,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* View all on GitHub */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -130,13 +125,10 @@ function ProjectCard({
       transition={{ duration: 0.5, delay: index * 0.12 }}
       className="group relative flex flex-col p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-cyan-400/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-400/10 transition-all duration-300"
     >
-      {/* Hover glow overlay */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/5 group-hover:to-transparent transition-all duration-300 pointer-events-none" />
 
-      {/* Header row */}
       <div className="flex items-start justify-between gap-3 mb-3 relative z-10">
         <div className="flex items-center gap-3">
-          {/* Folder icon */}
           <div className="w-10 h-10 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center flex-shrink-0">
             <svg className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
@@ -176,12 +168,10 @@ function ProjectCard({
         </div>
       </div>
 
-      {/* Description */}
       <p className="font-dm text-slate-400 text-sm leading-relaxed mb-5 relative z-10 flex-grow">
         {project.description}
       </p>
 
-      {/* Tech pills */}
       <div className="flex flex-wrap gap-2 relative z-10">
         {project.tech.map((t) => (
           <span

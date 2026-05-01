@@ -7,6 +7,8 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Case Studies", href: "#case-studies" },
+  { label: "Expertise", href: "#expertise" },
   { label: "Skills", href: "#skills" },
   { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
@@ -38,7 +40,13 @@ export default function Navbar() {
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
     const id = href.slice(1);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 50);
   };
 
   return (
@@ -104,9 +112,9 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <div className="w-6 flex flex-col gap-1.5">
-            <span className={`h-px bg-current transition-all ${menuOpen ? "rotate-45 translate-y-2.5" : ""}`} />
-            <span className={`h-px bg-current transition-all ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`h-px bg-current transition-all ${menuOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
+            <span className={`w-full h-px bg-current transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-2.5" : ""}`} />
+            <span className={`w-full h-px bg-current transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`w-full h-px bg-current transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
           </div>
         </button>
       </div>

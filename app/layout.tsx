@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, DM_Sans } from "next/font/google";
 import "./globals.css";
+import SmoothScrollProvider from "../components/SmoothScrollProvider";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -85,7 +86,9 @@ export default function RootLayout({
       lang="en"
       className={`scroll-smooth ${sora.variable} ${dmSans.variable}`}
     >
-      <body className="antialiased noise-overlay">{children}</body>
+      <body className="antialiased noise-overlay">
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }

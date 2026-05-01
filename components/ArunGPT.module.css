@@ -378,6 +378,35 @@
     0 0 0 6px rgba(37, 189, 255, 0.08);
 }
 
+.launcherRing {
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 212, 255, 0.55);
+  animation: launcherPulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+.launcherRing2 {
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 212, 255, 0.28);
+  animation: launcherPulse 2.4s ease-out 1.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes launcherPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
 .launcherTooltip {
   position: absolute;
   right: 72px;
@@ -429,53 +458,43 @@
 
 @media (max-width: 640px) {
   .root {
-    right: 12px;
-    bottom: 12px;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
   }
 
+  /* Bottom-sheet style: spans full width, sits above launcher */
   .panel {
-    right: 0;
-    bottom: 74px;
-    width: min(380px, calc(100vw - 24px));
-    height: min(620px, 78vh);
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 88px;
+    width: auto;
+    height: min(540px, 70vh);
+    border-radius: 18px;
   }
 
-  .messagesViewport {
-    padding: 16px 12px 14px;
-  }
-
-  .inputDock {
-    padding: 12px;
-  }
-
-  .messageBubble {
-    max-width: 84%;
+  .launcher {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 54px;
+    height: 54px;
   }
 
   .launcherTooltip {
     display: none;
   }
-}
-
-@media (max-width: 380px) {
-  .panel {
-    width: calc(100vw - 20px);
-    right: -2px;
-  }
-
-  .header,
-  .inputDock {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
 
   .messagesViewport {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 14px 12px 12px;
+  }
+
+  .inputDock {
+    padding: 10px 12px 12px;
   }
 
   .messageBubble {
-    max-width: 88%;
-    padding: 11px 12px;
+    max-width: 86%;
   }
 }
