@@ -93,7 +93,7 @@ export default function Hero() {
       {/* Content — foreground (moves up fastest as hero exits) */}
       <motion.div
         style={{ y: contentYSpring, opacity: contentOpacity }}
-        className="relative z-10 text-center px-6 max-w-4xl mx-auto"
+        className="relative z-10 text-center px-6 max-w-3xl lg:max-w-4xl mx-auto"
       >
       <motion.div
         className="w-full"
@@ -120,7 +120,7 @@ export default function Hero() {
         {/* Name */}
         <motion.h1
           variants={itemVariants}
-          className="font-sora text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6 leading-tight"
+          className="font-sora text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white mb-6 leading-tight"
           style={{ textShadow: "0 0 60px rgba(0,212,255,0.2)" }}
         >
           Arun Kumar

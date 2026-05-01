@@ -2,7 +2,7 @@
   position: fixed;
   right: 24px;
   bottom: 24px;
-  z-index: 50;
+  z-index: 60;
   pointer-events: none;
 }
 
@@ -15,8 +15,8 @@
   position: absolute;
   right: 0;
   bottom: 84px;
-  width: min(380px, calc(100vw - 24px));
-  height: min(620px, 78vh);
+  width: min(380px, calc(100vw - 48px));
+  height: min(580px, calc(100vh - 160px));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -470,7 +470,7 @@
     right: 10px;
     bottom: 88px;
     width: auto;
-    height: min(540px, 70vh);
+    height: min(520px, calc(100vh - 140px));
     border-radius: 18px;
   }
 
