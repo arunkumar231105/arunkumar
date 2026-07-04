@@ -15,7 +15,7 @@ import ArunGPT from "../components/ArunGPT";
 
 export default function Home() {
   return (
-    <main className="relative bg-navy-950 min-h-screen">
+    <main className="relative min-h-screen">
       <ScrollProgress />
       <Navbar />
       <Hero />

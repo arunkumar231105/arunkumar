@@ -17,10 +17,10 @@ const areas = [
     description:
       "Design and ship end-to-end data pipelines — raw source ingestion to warehouse-ready structured tables. Orchestrate multi-stage ETL workflows with schema handling, validation, and automated alerting.",
     signals: ["Apache Airflow", "Snowflake", "AWS S3", "ETL Orchestration"],
-    icon: "bg-cyan-400/10 border-cyan-400/20 text-cyan-400",
-    border: "hover:border-cyan-400/30",
-    pill: "bg-cyan-400/5 text-cyan-400/70 border-cyan-400/10",
-    shadow: "group-hover:shadow-cyan-400/5",
+    icon: "bg-[#e2572b]/10 border-[#e2572b]/30 text-[#e2572b]",
+    border: "hover:border-[#e2572b]/60",
+    pill: "bg-[#16130e]/5 text-[#3f3f46] border-[#16130e]/15",
+    shadow: "",
   },
   {
     Icon: HiGlobeAlt,
@@ -28,10 +28,10 @@ const areas = [
     description:
       "Extract structured data from any website — static HTML through to fully JavaScript-rendered platforms. Build resilient scrapers with anti-bot handling, retry logic, and multi-source pipelines at scale.",
     signals: ["Selenium", "Playwright", "BeautifulSoup", "Apify", "Requests"],
-    icon: "bg-blue-400/10 border-blue-400/20 text-blue-400",
-    border: "hover:border-blue-400/30",
-    pill: "bg-blue-400/5 text-blue-400/70 border-blue-400/10",
-    shadow: "group-hover:shadow-blue-400/5",
+    icon: "bg-[#567e88]/10 border-[#567e88]/30 text-[#567e88]",
+    border: "hover:border-[#567e88]/60",
+    pill: "bg-[#16130e]/5 text-[#3f3f46] border-[#16130e]/15",
+    shadow: "",
   },
   {
     Icon: HiServer,
@@ -39,10 +39,10 @@ const areas = [
     description:
       "Build production-grade REST APIs — authentication, RBAC, database modeling, caching, and financial-grade reliability. Architect backend systems that handle real user data and concurrent requests safely.",
     signals: ["FastAPI", "PostgreSQL", "JWT", "Redis", "Docker"],
-    icon: "bg-indigo-400/10 border-indigo-400/20 text-indigo-400",
-    border: "hover:border-indigo-400/30",
-    pill: "bg-indigo-400/5 text-indigo-400/70 border-indigo-400/10",
-    shadow: "group-hover:shadow-indigo-400/5",
+    icon: "bg-[#e2572b]/10 border-[#e2572b]/30 text-[#e2572b]",
+    border: "hover:border-[#e2572b]/60",
+    pill: "bg-[#16130e]/5 text-[#3f3f46] border-[#16130e]/15",
+    shadow: "",
   },
   {
     Icon: HiCloud,
@@ -50,10 +50,10 @@ const areas = [
     description:
       "Deploy, containerize, and scale backend systems on AWS. Comfortable across S3, EC2, Lambda, SQS, and Glue — with Docker for containerization and Redis for caching and session management.",
     signals: ["AWS S3", "EC2", "Lambda", "Docker", "Redis"],
-    icon: "bg-sky-400/10 border-sky-400/20 text-sky-400",
-    border: "hover:border-sky-400/30",
-    pill: "bg-sky-400/5 text-sky-400/70 border-sky-400/10",
-    shadow: "group-hover:shadow-sky-400/5",
+    icon: "bg-[#567e88]/10 border-[#567e88]/30 text-[#567e88]",
+    border: "hover:border-[#567e88]/60",
+    pill: "bg-[#16130e]/5 text-[#3f3f46] border-[#16130e]/15",
+    shadow: "",
   },
   {
     Icon: HiBolt,
@@ -61,10 +61,10 @@ const areas = [
     description:
       "Automate repetitive data and business workflows end-to-end using Python. From scheduled ETL triggers and data reporting to n8n pipelines — eliminate manual steps at every layer of the stack.",
     signals: ["Python", "n8n", "Apache Airflow", "Task Scheduling"],
-    icon: "bg-amber-400/10 border-amber-400/20 text-amber-400",
-    border: "hover:border-amber-400/30",
-    pill: "bg-amber-400/5 text-amber-400/70 border-amber-400/10",
-    shadow: "group-hover:shadow-amber-400/5",
+    icon: "bg-[#e2572b]/10 border-[#e2572b]/30 text-[#e2572b]",
+    border: "hover:border-[#e2572b]/60",
+    pill: "bg-[#16130e]/5 text-[#3f3f46] border-[#16130e]/15",
+    shadow: "",
   },
 ];
 
@@ -72,8 +72,8 @@ export default function CoreExpertise() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="expertise" className="py-28 px-6 bg-[#0d1530] relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+    <section id="expertise" className="py-28 px-6 relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#e2572b]/40 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -85,7 +85,7 @@ export default function CoreExpertise() {
         >
           <p className="section-subheading">What I Do Best</p>
           <h2 className="section-heading">
-            Core <span className="text-cyan-400">Expertise</span>
+            Core <span className="text-[#e2572b]">Expertise</span>
           </h2>
         </motion.div>
 
@@ -96,7 +96,7 @@ export default function CoreExpertise() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`group relative p-6 rounded-2xl border border-white/5 bg-white/[0.02] ${area.border} hover:shadow-xl ${area.shadow} transition-all duration-300`}
+              className={`group relative p-6 rounded-2xl border-2 border-[#16130e]/10 bg-[#ffffff] ${area.border} hover:bg-[#f7f7f5] transition-all duration-300`}
             >
               {/* Icon */}
               <div
@@ -106,12 +106,12 @@ export default function CoreExpertise() {
               </div>
 
               {/* Title */}
-              <h3 className="font-sora text-base font-semibold text-white mb-3 leading-snug">
+              <h3 className="font-sora text-base font-semibold text-[#16130e] mb-3 leading-snug">
                 {area.title}
               </h3>
 
               {/* Description */}
-              <p className="font-dm text-sm text-slate-400 leading-relaxed mb-5">
+              <p className="font-dm text-sm text-[#52525b] leading-relaxed mb-5">
                 {area.description}
               </p>
 

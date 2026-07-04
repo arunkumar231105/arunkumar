@@ -58,8 +58,8 @@ export default function Projects() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="projects" className="py-28 px-6 bg-[#0a0f1e] relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+    <section id="projects" className="py-28 px-6 relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#e2572b]/40 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -71,7 +71,7 @@ export default function Projects() {
         >
           <p className="section-subheading">What I&apos;ve Built</p>
           <h2 className="section-heading">
-            Featured <span className="text-cyan-400">Projects</span>
+            Featured <span className="text-[#e2572b]">Projects</span>
           </h2>
         </motion.div>
 
@@ -91,7 +91,7 @@ export default function Projects() {
             href="https://github.com/arunkumar231105"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 font-dm text-sm transition-colors group"
+            className="inline-flex items-center gap-2 text-[#52525b] hover:text-[#e2572b] font-dm text-sm transition-colors group"
           >
             View all projects on GitHub
             <svg
@@ -123,22 +123,22 @@ function ProjectCard({
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.12 }}
-      className="group relative flex flex-col p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-cyan-400/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-400/10 transition-all duration-300"
+      className="group relative flex flex-col p-6 rounded-2xl border-2 border-[#16130e]/10 bg-[#ffffff] hover:border-[#e2572b]/60 hover:bg-[#f7f7f5] hover:-translate-y-1 transition-all duration-300"
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/5 group-hover:to-transparent transition-all duration-300 pointer-events-none" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#e2572b]/0 to-[#e2572b]/0 group-hover:from-[#e2572b]/5 group-hover:to-transparent transition-all duration-300 pointer-events-none" />
 
       <div className="flex items-start justify-between gap-3 mb-3 relative z-10">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center flex-shrink-0">
-            <svg className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="w-10 h-10 rounded-xl bg-[#e2572b]/10 border border-[#e2572b]/30 flex items-center justify-center flex-shrink-0">
+            <svg className="w-5 h-5 text-[#e2572b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
             </svg>
           </div>
           <div>
-            <h3 className="font-sora text-base font-semibold text-white group-hover:text-cyan-400 transition-colors leading-tight">
+            <h3 className="font-sora text-base font-semibold text-[#16130e] group-hover:text-[#e2572b] transition-colors leading-tight">
               {project.name}
             </h3>
-            <p className="text-xs font-dm text-slate-600 mt-0.5">{project.period}</p>
+            <p className="text-xs font-dm text-[#71717a] mt-0.5">{project.period}</p>
           </div>
         </div>
 
@@ -148,7 +148,7 @@ function ProjectCard({
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-500 hover:text-cyan-400 transition-colors"
+              className="text-[#52525b] hover:text-[#e2572b] transition-colors"
               aria-label={`Live demo for ${project.name}`}
               onClick={(e) => e.stopPropagation()}
             >
@@ -159,7 +159,7 @@ function ProjectCard({
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 hover:text-cyan-400 transition-colors"
+            className="text-[#52525b] hover:text-[#e2572b] transition-colors"
             aria-label={`GitHub repo for ${project.name}`}
             onClick={(e) => e.stopPropagation()}
           >
@@ -168,7 +168,7 @@ function ProjectCard({
         </div>
       </div>
 
-      <p className="font-dm text-slate-400 text-sm leading-relaxed mb-5 relative z-10 flex-grow">
+      <p className="font-dm text-[#52525b] text-sm leading-relaxed mb-5 relative z-10 flex-grow">
         {project.description}
       </p>
 
@@ -176,7 +176,7 @@ function ProjectCard({
         {project.tech.map((t) => (
           <span
             key={t}
-            className="text-xs font-dm px-2.5 py-1 rounded-md bg-white/5 text-slate-400 border border-white/5 group-hover:border-cyan-400/10 group-hover:text-cyan-400/70 transition-colors"
+            className="text-xs font-dm px-2.5 py-1 rounded-md bg-[#16130e]/5 text-[#3f3f46] border border-[#16130e]/15 group-hover:border-[#e2572b]/30 group-hover:text-[#e2572b] transition-colors"
           >
             {t}
           </span>

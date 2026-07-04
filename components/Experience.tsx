@@ -76,30 +76,6 @@ const experiences: Experience[] = [
     tech: ["Python", "TensorFlow", "ML Integration", "FastAPI", "Inference Optimization"],
   },
   {
-    role: "Agentic AI Developer",
-    company: "UXGENIE",
-    location: "Karachi, Pakistan",
-    period: "Sep 2025 – Oct 2025",
-    current: false,
-    bullets: [
-      "Designed and implemented multi-step agentic AI workflows using LLM orchestration for automated UX research tooling.",
-      "Built automation pipelines that replaced manual UX research tasks through AI-driven data extraction and synthesis.",
-    ],
-    tech: ["Agentic AI", "LLM Orchestration", "Python", "Automation"],
-  },
-  {
-    role: "Frontend Developer",
-    company: "High Tech Software House",
-    location: "Karachi, Pakistan",
-    period: "Aug 2025 – Sep 2025",
-    current: false,
-    bullets: [
-      "Built pixel-perfect, responsive landing pages and portfolio sites in React (TypeScript) with Tailwind CSS.",
-      "Implemented component-driven UI architecture ensuring cross-browser compatibility and consistent design fidelity.",
-    ],
-    tech: ["React", "TypeScript", "Tailwind CSS"],
-  },
-  {
     role: "Freelance Engineer",
     company: "Fiverr",
     location: "Remote — Global",
@@ -117,8 +93,8 @@ export default function Experience() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="experience" className="py-28 px-6 bg-[#0d1530] relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+    <section id="experience" className="py-28 px-6 band-teal relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -128,15 +104,15 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="section-subheading">Where I&apos;ve Worked</p>
-          <h2 className="section-heading">
-            Work <span className="text-cyan-400">Experience</span>
+          <p className="section-subheading text-[#16130e] font-bold">Where I&apos;ve Worked</p>
+          <h2 className="section-heading text-[#ffffff]">
+            Work <span className="text-[#ffffff]">Experience</span>
           </h2>
         </motion.div>
 
         {/* Timeline */}
         <div className="relative">
-          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/40 via-cyan-400/20 to-transparent" />
+          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-white/40 via-white/20 to-transparent" />
 
           <div className="space-y-10">
             {experiences.map((exp, i) => (
@@ -166,31 +142,31 @@ function ExperienceCard({
       className="relative pl-12 md:pl-16"
     >
       {/* Timeline dot */}
-      <div className="absolute left-2 md:left-4 top-4 w-4 h-4 rounded-full border-2 border-cyan-400 bg-[#0d1530] flex items-center justify-center">
+      <div className="absolute left-2 md:left-4 top-4 w-4 h-4 rounded-full border-2 border-[#ffffff] bg-[#567e88] flex items-center justify-center">
         {exp.current && (
-          <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+          <div className="w-2 h-2 rounded-full bg-[#ffffff] animate-pulse" />
         )}
       </div>
 
       {/* Card */}
-      <div className="group p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-cyan-400/20 hover:bg-white/[0.04] transition-all duration-300">
+      <div className="group p-6 rounded-2xl border-2 border-white/15 bg-black/10 hover:border-[#ffffff]/50 hover:bg-black/15 transition-all duration-300">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
           <div>
-            <h3 className="font-sora text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors">
+            <h3 className="font-sora text-lg font-semibold text-[#ffffff] group-hover:text-[#ffd8c2] transition-colors">
               {exp.role}
             </h3>
-            <p className="font-dm text-slate-400 text-sm">
+            <p className="font-dm text-[#e6eef0] text-sm">
               {exp.company}
-              <span className="text-slate-600 mx-2">·</span>
+              <span className="text-[#e6eef0]/60 mx-2">·</span>
               {exp.location}
             </p>
           </div>
           <span
             className={`text-xs font-dm px-3 py-1 rounded-full self-start whitespace-nowrap ${
               exp.current
-                ? "bg-cyan-400/10 text-cyan-400 border border-cyan-400/20"
-                : "bg-white/5 text-slate-500 border border-white/5"
+                ? "bg-[#ffffff] text-[#16130e] border border-transparent"
+                : "bg-black/15 text-[#e6eef0]/80 border border-white/10"
             }`}
           >
             {exp.period}
@@ -199,7 +175,7 @@ function ExperienceCard({
 
         {/* Role description */}
         {exp.description && (
-          <p className="font-dm text-slate-400 text-sm leading-relaxed mb-4 border-l-2 border-cyan-400/30 pl-3">
+          <p className="font-dm text-[#e6eef0] text-sm leading-relaxed mb-4 border-l-2 border-[#ffffff]/40 pl-3">
             {exp.description}
           </p>
         )}
@@ -207,8 +183,8 @@ function ExperienceCard({
         {/* Bullets */}
         <ul className="space-y-2 mb-4">
           {exp.bullets.map((b, bi) => (
-            <li key={bi} className="flex gap-3 text-sm font-dm text-slate-400 leading-relaxed">
-              <span className="text-cyan-400 mt-1 flex-shrink-0">▹</span>
+            <li key={bi} className="flex gap-3 text-sm font-dm text-[#e6eef0] leading-relaxed">
+              <span className="text-[#ffffff] mt-1 flex-shrink-0">▹</span>
               {b}
             </li>
           ))}
@@ -216,8 +192,8 @@ function ExperienceCard({
 
         {/* Workflow line */}
         {exp.workflow && (
-          <div className="mb-4 px-3 py-2 rounded-lg bg-[#080c1a] border border-cyan-400/10 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
-            <p className="font-mono text-[10px] sm:text-[11px] text-cyan-400/50 whitespace-nowrap tracking-wide">
+          <div className="mb-4 px-3 py-2 rounded-lg bg-[#16130e]/80 border border-white/10 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
+            <p className="font-mono text-[10px] sm:text-[11px] text-[#ffffff]/60 whitespace-nowrap tracking-wide">
               {exp.workflow}
             </p>
           </div>
@@ -226,8 +202,8 @@ function ExperienceCard({
         {/* Impact statement */}
         {exp.impact && (
           <div className="flex items-start gap-2 mb-4">
-            <span className="text-cyan-400 text-xs mt-0.5 flex-shrink-0">◆</span>
-            <p className="font-dm text-xs text-slate-300 leading-relaxed">{exp.impact}</p>
+            <span className="text-[#ffd8c2] text-xs mt-0.5 flex-shrink-0">◆</span>
+            <p className="font-dm text-xs text-[#e6eef0] leading-relaxed">{exp.impact}</p>
           </div>
         )}
 
@@ -236,7 +212,7 @@ function ExperienceCard({
           {exp.tech.map((t) => (
             <span
               key={t}
-              className="text-xs font-dm px-2.5 py-1 rounded-md bg-cyan-400/5 text-cyan-400/80 border border-cyan-400/10"
+              className="text-xs font-dm px-2.5 py-1 rounded-md bg-black/20 text-[#ffffff]/90 border border-white/10"
             >
               {t}
             </span>

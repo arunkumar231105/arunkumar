@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arunkumar.dev"),
+  metadataBase: new URL("https://arunkumar.works"),
   title: "Arun Kumar - Data Engineer & Backend Developer",
   description:
     "Software Engineering student at SZABIST with hands-on experience in data engineering, ETL pipelines, backend development, and AI-powered systems. Oracle Cloud GenAI Certified.",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://arunkumar.dev",
+    url: "https://arunkumar.works",
     title: "Arun Kumar - Data Engineer & Backend Developer",
     description:
       "Building ETL pipelines and backend systems for startups. Oracle Cloud GenAI Certified.",

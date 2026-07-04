@@ -41,8 +41,8 @@ export default function Skills() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="skills" className="py-28 px-6 bg-[#0d1530] relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+    <section id="skills" className="py-28 px-6 relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#e2572b]/40 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -54,7 +54,7 @@ export default function Skills() {
         >
           <p className="section-subheading">What I Work With</p>
           <h2 className="section-heading">
-            Technical <span className="text-cyan-400">Skills</span>
+            Technical <span className="text-[#e2572b]">Skills</span>
           </h2>
         </motion.div>
 
@@ -65,14 +65,14 @@ export default function Skills() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: gi * 0.1 }}
-              className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-cyan-400/20 transition-all duration-300 group"
+              className="p-6 rounded-2xl border-2 border-[#16130e]/10 bg-[#ffffff] hover:border-[#e2572b]/60 hover:bg-[#f7f7f5] transition-all duration-300 group"
             >
               {/* Category header */}
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center flex-shrink-0">
-                  <group.Icon className="w-4 h-4 text-cyan-400" />
+                <div className="w-8 h-8 rounded-lg bg-[#e2572b]/10 border border-[#e2572b]/30 flex items-center justify-center flex-shrink-0">
+                  <group.Icon className="w-4 h-4 text-[#e2572b]" />
                 </div>
-                <h3 className="font-sora text-sm font-semibold text-white uppercase tracking-wider">
+                <h3 className="font-sora text-sm font-semibold text-[#16130e] uppercase tracking-wider">
                   {group.category}
                 </h3>
               </div>
@@ -82,7 +82,7 @@ export default function Skills() {
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs font-dm px-3 py-1.5 rounded-lg border border-cyan-400/15 bg-cyan-400/5 text-cyan-400/80 hover:border-cyan-400/40 hover:text-cyan-400 hover:bg-cyan-400/10 transition-all duration-150 cursor-default"
+                    className="text-xs font-dm px-3 py-1.5 rounded-lg border border-[#16130e]/15 bg-[#16130e]/5 text-[#3f3f46] hover:border-[#e2572b]/30 hover:text-[#e2572b] hover:bg-[#e2572b]/10 transition-all duration-150 cursor-default"
                   >
                     {skill}
                   </span>

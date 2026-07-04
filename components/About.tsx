@@ -54,12 +54,12 @@ function AnimatedStat({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay, duration: 0.5 }}
-      className="text-center p-3 rounded-xl border border-white/5 bg-white/[0.02]"
+      className="text-center p-3 rounded-xl border-2 border-[#16130e]/10 bg-[#ffffff]"
     >
-      <p className="font-sora text-xl font-bold text-cyan-400">
+      <p className="font-sora text-xl font-bold text-[#e2572b]">
         {count}{suffix}
       </p>
-      <p className="font-dm text-xs text-slate-500 mt-0.5">{label}</p>
+      <p className="font-dm text-xs text-[#52525b] mt-0.5">{label}</p>
     </motion.div>
   );
 }
@@ -68,9 +68,9 @@ export default function About() {
   const { ref, inView } = useInView(0.2);
 
   return (
-    <section id="about" className="py-28 px-6 bg-[#0a0f1e] relative">
-      {/* Subtle top border glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+    <section id="about" className="py-28 px-6 relative">
+      {/* Subtle top border divider */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#e2572b]/40 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
         {/* Section label */}
@@ -83,7 +83,7 @@ export default function About() {
         >
           <p className="section-subheading">Get to Know Me</p>
           <h2 className="section-heading">
-            About <span className="text-cyan-400">Me</span>
+            About <span className="text-[#e2572b]">Me</span>
           </h2>
         </motion.div>
 
@@ -96,10 +96,10 @@ export default function About() {
             className="flex justify-center md:justify-start"
           >
             <div className="relative">
-              {/* Glow ring */}
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-cyan-400/40 to-cyan-400/10 blur-sm" />
-              <div className="absolute -inset-px rounded-2xl border border-cyan-400/30" />
-              <div className="relative rounded-2xl overflow-hidden w-72 h-80 md:w-80 md:h-96 animate-glow">
+              {/* Frame ring */}
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[#e2572b]/40 to-[#e2572b]/10" />
+              <div className="absolute -inset-px rounded-2xl border border-[#e2572b]/30" />
+              <div className="relative rounded-2xl overflow-hidden w-72 h-80 md:w-80 md:h-96">
                 <Image
                   src="/arun-kumar.jpeg"
                   alt="Arun Kumar"
@@ -108,11 +108,11 @@ export default function About() {
                   priority
                 />
                 {/* Subtle overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#16130e]/10 to-transparent" />
               </div>
               {/* Decorative corner accent */}
-              <div className="absolute -bottom-3 -right-3 w-16 h-16 border-r-2 border-b-2 border-cyan-400/40 rounded-br-lg" />
-              <div className="absolute -top-3 -left-3 w-16 h-16 border-l-2 border-t-2 border-cyan-400/40 rounded-tl-lg" />
+              <div className="absolute -bottom-3 -right-3 w-16 h-16 border-r-2 border-b-2 border-[#e2572b]/40 rounded-br-lg" />
+              <div className="absolute -top-3 -left-3 w-16 h-16 border-l-2 border-t-2 border-[#e2572b]/40 rounded-tl-lg" />
             </div>
           </motion.div>
 
@@ -122,24 +122,24 @@ export default function About() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <p className="font-dm text-slate-300 text-base leading-relaxed mb-5">
+            <p className="font-dm text-[#52525b] text-base leading-relaxed mb-5">
               I&apos;m a Software Engineering student at{" "}
-              <span className="text-white font-medium">SZABIST, Karachi</span> (graduating 2027),
+              <span className="text-[#16130e] font-medium">SZABIST, Karachi</span> (graduating 2027),
               currently working as a{" "}
-              <span className="text-cyan-400 font-medium">Data Engineer at Technocas</span> and{" "}
-              <span className="text-cyan-400 font-medium">Backend Developer at Zank AI</span>, a
+              <span className="text-[#e2572b] font-medium">Data Engineer at Technocas</span> and{" "}
+              <span className="text-[#e2572b] font-medium">Backend Developer at Zank AI</span>, a
               US-based fintech startup — both roles I hold simultaneously.
             </p>
-            <p className="font-dm text-slate-300 text-base leading-relaxed mb-5">
+            <p className="font-dm text-[#52525b] text-base leading-relaxed mb-5">
               I specialize in building end-to-end data pipelines, scraping systems, and production
               backend infrastructure. From wrangling 10k+ product records out of e-commerce sites
               to designing Snowflake ETL workflows with Airflow — I build things that work at scale.
             </p>
-            <p className="font-dm text-slate-300 text-base leading-relaxed mb-8">
+            <p className="font-dm text-[#52525b] text-base leading-relaxed mb-8">
               I&apos;m also trained in{" "}
-              <span className="text-white font-medium">Cloud Data Engineering at SMIT</span> and
+              <span className="text-[#16130e] font-medium">Cloud Data Engineering at SMIT</span> and
               hold an{" "}
-              <span className="text-white font-medium">Oracle Cloud GenAI certification</span>.
+              <span className="text-[#16130e] font-medium">Oracle Cloud GenAI certification</span>.
               Open to remote roles in Cloud Data Engineering, Backend, or AI integration.
             </p>
 

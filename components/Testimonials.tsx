@@ -10,8 +10,8 @@ const testimonials = [
     name: "Client via Fiverr",
     role: "E-Commerce Startup",
     initials: "EC",
-    color: "from-cyan-400/20 to-cyan-400/5",
-    border: "border-cyan-400/20",
+    color: "from-black/10 to-black/10",
+    border: "border-white/15",
   },
   {
     quote:
@@ -19,8 +19,8 @@ const testimonials = [
     name: "Team Lead",
     role: "Zank AI — US Fintech",
     initials: "ZA",
-    color: "from-blue-400/20 to-blue-400/5",
-    border: "border-blue-400/20",
+    color: "from-black/10 to-black/10",
+    border: "border-white/15",
   },
   {
     quote:
@@ -28,8 +28,8 @@ const testimonials = [
     name: "Tech Lead",
     role: "HexaVibes Solutions",
     initials: "HV",
-    color: "from-purple-400/20 to-purple-400/5",
-    border: "border-purple-400/20",
+    color: "from-black/10 to-black/10",
+    border: "border-white/15",
   },
 ];
 
@@ -37,8 +37,8 @@ export default function Testimonials() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="testimonials" className="py-28 px-6 bg-[#0d1530] relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+    <section id="testimonials" className="py-28 px-6 band-teal relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#ffffff]/40 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -48,9 +48,9 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="section-subheading">Kind Words</p>
-          <h2 className="section-heading">
-            What People <span className="text-cyan-400">Say</span>
+          <p className="section-subheading text-[#16130e]">Kind Words</p>
+          <h2 className="section-heading text-[#ffffff]">
+            What People <span className="text-[#ffd8c2]">Say</span>
           </h2>
         </motion.div>
 
@@ -61,22 +61,22 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className={`relative p-6 rounded-2xl border ${t.border} bg-gradient-to-br ${t.color} flex flex-col gap-4`}
+              className={`relative p-6 rounded-2xl border-2 ${t.border} bg-gradient-to-br ${t.color} hover:border-[#ffffff]/50 transition-colors duration-300 flex flex-col gap-4`}
             >
               {/* Quote mark */}
-              <span className="text-4xl text-cyan-400/30 font-sora leading-none select-none">&ldquo;</span>
+              <span className="text-4xl text-[#ffd8c2] font-sora leading-none select-none">&ldquo;</span>
 
-              <p className="font-dm text-slate-300 text-sm leading-relaxed -mt-4">
+              <p className="font-dm text-[#e6eef0] text-sm leading-relaxed -mt-4">
                 {t.quote}
               </p>
 
-              <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/5">
-                <div className={`w-9 h-9 rounded-full bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center font-sora font-bold text-xs text-cyan-400`}>
+              <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/15">
+                <div className={`w-9 h-9 rounded-full bg-[#ffffff]/10 border border-[#ffffff]/60 flex items-center justify-center font-sora font-bold text-xs text-[#ffd8c2]`}>
                   {t.initials}
                 </div>
                 <div>
-                  <p className="font-sora text-sm font-semibold text-white">{t.name}</p>
-                  <p className="font-dm text-xs text-slate-500">{t.role}</p>
+                  <p className="font-sora text-sm font-semibold text-[#ffffff]">{t.name}</p>
+                  <p className="font-dm text-xs text-[#e6eef0]/70">{t.role}</p>
                 </div>
               </div>
             </motion.div>

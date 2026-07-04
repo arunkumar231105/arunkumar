@@ -7,10 +7,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Expertise", href: "#expertise" },
   { label: "Skills", href: "#skills" },
-  { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -56,7 +53,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0a0f1e]/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
+          ? "bg-[#ffffff]/90 backdrop-blur-xl border-b-2 border-[#16130e]/10 shadow-lg shadow-[#16130e]/5"
           : "bg-transparent"
       }`}
     >
@@ -64,9 +61,9 @@ export default function Navbar() {
         {/* Logo */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-sora font-bold text-lg text-white hover:text-cyan-400 transition-colors"
+          className="font-sora font-extrabold text-lg text-[#16130e] hover:text-[#e2572b] transition-colors"
         >
-          AK<span className="text-cyan-400">.</span>
+          AK<span className="text-[#e2572b]">.</span>
         </button>
 
         {/* Desktop Nav */}
@@ -77,13 +74,13 @@ export default function Navbar() {
               <li key={link.href}>
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className={`font-dm text-sm font-medium transition-colors relative group ${
-                    active === id ? "text-cyan-400" : "text-slate-400 hover:text-white"
+                  className={`font-dm text-sm font-semibold transition-colors relative group ${
+                    active === id ? "text-[#e2572b]" : "text-[#52525b] hover:text-[#16130e]"
                   }`}
                 >
                   {link.label}
                   <span
-                    className={`absolute -bottom-1 left-0 h-px bg-cyan-400 transition-all duration-300 ${
+                    className={`absolute -bottom-1 left-0 h-[2px] bg-[#e2572b] transition-all duration-300 ${
                       active === id ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
@@ -97,7 +94,7 @@ export default function Navbar() {
         <a
           href="/Arun_Resume.pdf"
           download
-          className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg border border-cyan-400/50 text-cyan-400 text-sm font-dm font-medium hover:bg-cyan-400/10 transition-all duration-200"
+          className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-[#16130e] text-[#ffffff] text-sm font-sora font-bold uppercase tracking-wide hover:bg-[#e2572b] transition-all duration-200"
         >
           Resume
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,7 +104,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-slate-400 hover:text-white p-1"
+          className="md:hidden text-[#16130e] hover:text-[#e2572b] p-1"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -126,14 +123,14 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0d1530]/95 backdrop-blur-xl border-b border-white/5"
+            className="md:hidden bg-[#ffffff]/95 backdrop-blur-xl border-b-2 border-[#16130e]/10"
           >
             <ul className="flex flex-col px-6 py-4 gap-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="text-slate-300 hover:text-cyan-400 font-dm text-sm transition-colors"
+                    className="text-[#16130e] hover:text-[#e2572b] font-dm text-sm font-semibold transition-colors"
                   >
                     {link.label}
                   </button>
@@ -143,7 +140,7 @@ export default function Navbar() {
                 <a
                   href="/Arun_Resume.pdf"
                   download
-                  className="inline-flex items-center gap-2 text-cyan-400 text-sm font-dm"
+                  className="inline-flex items-center gap-2 text-[#e2572b] text-sm font-dm font-bold"
                 >
                   Download Resume ↓
                 </a>

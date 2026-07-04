@@ -7,16 +7,26 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        paper: {
+          DEFAULT: "#ffffff",
+          card: "#ffffff",
+        },
+        ink: "#16130e",
+        retro: {
+          orange: "#e2572b",
+          teal: "#567e88",
+        },
+        // Legacy tokens remapped to the retro palette so stray usages stay on-theme
         navy: {
-          950: "#0a0f1e",
-          900: "#0d1530",
-          800: "#111f40",
-          700: "#162550",
+          950: "#ffffff",
+          900: "#ffffff",
+          800: "#ffffff",
+          700: "#ffffff",
         },
         cyan: {
-          400: "#00d4ff",
-          500: "#00bfe8",
-          600: "#00a8cc",
+          400: "#567e88",
+          500: "#4a707a",
+          600: "#e2572b",
         },
       },
       fontFamily: {
@@ -40,8 +50,8 @@ module.exports = {
           to: { opacity: "1", transform: "translateY(0)" },
         },
         glow: {
-          from: { boxShadow: "0 0 20px #00d4ff33" },
-          to: { boxShadow: "0 0 40px #00d4ff66, 0 0 80px #00d4ff22" },
+          from: { boxShadow: "0 0 0 rgba(0,0,0,0)" },
+          to: { boxShadow: "0 4px 24px rgba(22,19,14,0.15)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },

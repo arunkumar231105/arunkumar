@@ -6,17 +6,17 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/5 bg-[#0a0f1e] py-10 px-6">
+    <footer className="border-t border-white/10 bg-[#121214] py-10 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left — name */}
-          <p className="font-sora font-bold text-white text-sm">
-            Arun Kumar<span className="text-cyan-400">.</span>
+          <p className="font-sora font-extrabold text-[#ffffff] text-sm">
+            Arun Kumar<span className="text-[#e2572b]">.</span>
           </p>
 
           {/* Center — nav + copyright */}
           <div className="flex flex-col items-center gap-2">
-            <div className="flex flex-wrap justify-center items-center gap-4 text-xs font-dm text-slate-500">
+            <div className="flex flex-wrap justify-center items-center gap-4 text-xs font-dm text-[#ffffff]/70">
               {["About", "Projects", "Skills", "Contact"].map((s) => (
                 <button
                   key={s}
@@ -24,13 +24,13 @@ export default function Footer() {
                     const el = document.getElementById(s.toLowerCase());
                     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
                   }}
-                  className="hover:text-cyan-400 transition-colors"
+                  className="hover:text-[#e2572b] transition-colors"
                 >
                   {s}
                 </button>
               ))}
             </div>
-            <p className="font-dm text-slate-600 text-xs text-center">
+            <p className="font-dm text-[#ffffff]/60 text-xs text-center">
               &copy; {year} Arun Kumar. All rights reserved.
             </p>
           </div>
@@ -41,7 +41,7 @@ export default function Footer() {
               href="https://github.com/arunkumar231105"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-cyan-400 transition-colors"
+              className="text-[#ffffff]/60 hover:text-[#e2572b] transition-colors"
               aria-label="GitHub"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -52,7 +52,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/arun-kumar-b578a128b/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-cyan-400 transition-colors"
+              className="text-[#ffffff]/60 hover:text-[#e2572b] transition-colors"
               aria-label="LinkedIn"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@ export default function Footer() {
             </a>
             <a
               href="mailto:arunkumarjuswani12@gmail.com"
-              className="text-slate-600 hover:text-cyan-400 transition-colors"
+              className="text-[#ffffff]/60 hover:text-[#e2572b] transition-colors"
               aria-label="Email"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,7 +75,7 @@ export default function Footer() {
         <div className="flex justify-center mt-8">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-slate-600 hover:text-cyan-400 text-xs font-dm flex items-center gap-1.5 transition-colors group"
+            className="text-[#ffffff]/60 hover:text-[#e2572b] text-xs font-dm flex items-center gap-1.5 transition-colors group"
           >
             <svg
               className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform"

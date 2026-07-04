@@ -47,8 +47,9 @@ const contactLinks = [
   },
 ];
 
-// Replace YOUR_FORM_ID with your ID from https://formspree.io
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+// FormSubmit delivers to this inbox; first-ever submission triggers a one-time
+// activation email that must be confirmed before messages start arriving.
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/arunkumarjuswani12@gmail.com";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -65,10 +66,15 @@ export default function Contact() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          _subject: `Portfolio contact from ${form.name}`,
+          _template: "table",
+          _captcha: "false",
+        }),
       });
       if (res.ok) {
         setStatus("success");
@@ -85,8 +91,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 px-6 bg-[#0d1530] relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+    <section id="contact" className="py-28 px-6 relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#e2572b]/40 to-transparent" />
 
       <div className="max-w-5xl mx-auto">
         <motion.div
@@ -98,9 +104,9 @@ export default function Contact() {
         >
           <p className="section-subheading">Let&apos;s Talk</p>
           <h2 className="section-heading">
-            Get In <span className="text-cyan-400">Touch</span>
+            Get In <span className="text-[#e2572b]">Touch</span>
           </h2>
-          <p className="font-dm text-slate-400 text-base max-w-xl mx-auto mt-4">
+          <p className="font-dm text-[#52525b] text-base max-w-xl mx-auto mt-4">
             Open to remote roles in Data Engineering, Backend, or AI integration. Whether it&apos;s
             a job, project, or just a hello — my inbox is always open.
           </p>
@@ -120,21 +126,21 @@ export default function Contact() {
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all duration-200 group"
+                className="flex items-center gap-4 p-4 rounded-xl border-2 border-[#16130e]/10 bg-[#ffffff] hover:border-[#e2572b]/60 hover:bg-[#f7f7f5] transition-all duration-200 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 flex-shrink-0 group-hover:bg-cyan-400/20 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#e2572b]/10 border border-[#e2572b]/30 flex items-center justify-center text-[#e2572b] flex-shrink-0 group-hover:bg-[#e2572b]/20 transition-colors">
                   {link.icon}
                 </div>
                 <div>
-                  <p className="font-sora text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                  <p className="font-sora text-xs font-semibold text-[#71717a] uppercase tracking-wider">
                     {link.label}
                   </p>
-                  <p className="font-dm text-sm text-white group-hover:text-cyan-400 transition-colors">
+                  <p className="font-dm text-sm text-[#16130e] group-hover:text-[#e2572b] transition-colors">
                     {link.value}
                   </p>
                 </div>
                 <svg
-                  className="w-4 h-4 text-slate-600 ml-auto group-hover:text-cyan-400 group-hover:translate-x-1 transition-all"
+                  className="w-4 h-4 text-[#71717a] ml-auto group-hover:text-[#e2572b] group-hover:translate-x-1 transition-all"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -154,7 +160,7 @@ export default function Contact() {
             className="space-y-4"
           >
             <div>
-              <label className="block font-dm text-xs text-slate-500 uppercase tracking-wider mb-1.5">
+              <label className="block font-dm text-xs text-[#52525b] uppercase tracking-wider mb-1.5">
                 Name
               </label>
               <input
@@ -164,11 +170,11 @@ export default function Contact() {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="Your name"
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white font-dm text-sm placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:bg-white/[0.06] transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#f7f7f5] border-2 border-[#16130e]/15 text-[#16130e] font-dm text-sm placeholder-[#71717a] focus:outline-none focus:border-[#e2572b] focus:ring-2 focus:ring-[#e2572b]/20 transition-all"
               />
             </div>
             <div>
-              <label className="block font-dm text-xs text-slate-500 uppercase tracking-wider mb-1.5">
+              <label className="block font-dm text-xs text-[#52525b] uppercase tracking-wider mb-1.5">
                 Email
               </label>
               <input
@@ -178,11 +184,11 @@ export default function Contact() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="your@email.com"
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white font-dm text-sm placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:bg-white/[0.06] transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#f7f7f5] border-2 border-[#16130e]/15 text-[#16130e] font-dm text-sm placeholder-[#71717a] focus:outline-none focus:border-[#e2572b] focus:ring-2 focus:ring-[#e2572b]/20 transition-all"
               />
             </div>
             <div>
-              <label className="block font-dm text-xs text-slate-500 uppercase tracking-wider mb-1.5">
+              <label className="block font-dm text-xs text-[#52525b] uppercase tracking-wider mb-1.5">
                 Message
               </label>
               <textarea
@@ -192,23 +198,23 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 placeholder="What's on your mind?"
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white font-dm text-sm placeholder-slate-600 focus:outline-none focus:border-cyan-400/50 focus:bg-white/[0.06] transition-all resize-none"
+                className="w-full px-4 py-3 rounded-xl bg-[#f7f7f5] border-2 border-[#16130e]/15 text-[#16130e] font-dm text-sm placeholder-[#71717a] focus:outline-none focus:border-[#e2572b] focus:ring-2 focus:ring-[#e2572b]/20 transition-all resize-none"
               />
             </div>
             {status === "success" && (
-              <div className="w-full py-3 px-4 rounded-xl bg-green-400/10 border border-green-400/30 text-green-400 font-dm text-sm text-center">
+              <div className="w-full py-3 px-4 rounded-xl bg-green-600/10 border border-green-600/30 text-green-700 font-dm text-sm text-center">
                 Message sent! I&apos;ll get back to you soon.
               </div>
             )}
             {status === "error" && (
-              <div className="w-full py-3 px-4 rounded-xl bg-red-400/10 border border-red-400/30 text-red-400 font-dm text-sm text-center">
+              <div className="w-full py-3 px-4 rounded-xl bg-red-600/10 border border-red-600/30 text-red-700 font-dm text-sm text-center">
                 Something went wrong. Please try again or email me directly.
               </div>
             )}
             <button
               type="submit"
               disabled={status === "loading" || status === "success"}
-              className="w-full py-3.5 rounded-xl bg-cyan-400 text-[#0a0f1e] font-sora font-bold text-sm hover:bg-cyan-300 transition-all duration-200 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/30 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+              className="w-full py-3.5 rounded-full bg-[#16130e] text-[#ffffff] font-sora font-bold text-sm hover:bg-[#e2572b] transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
             >
               {status === "loading" ? "Sending..." : status === "success" ? "Sent!" : "Send Message"}
             </button>

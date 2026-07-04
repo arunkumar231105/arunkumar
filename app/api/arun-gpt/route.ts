@@ -26,8 +26,6 @@ Use only the following source of truth:
   - Freelancer on Fiverr
 - Previous experience:
   - Software Engineer (AI) at HexaVibes Solutions
-  - Agentic AI Developer at UXGENIE
-  - Frontend Developer at High Tech Software House
 - Core skills: Python, SQL, ETL, Data Engineering, AI Tools, APIs, Backend
 - Additional skills: Pandas, NumPy, Selenium, BeautifulSoup, Apify, Playwright, Metabase, FastAPI, Node.js, React, Next.js, Express, MySQL, SQL Server, Snowflake, PostgreSQL, Firebase, AWS S3, EC2, Lambda, SQS, SNS, Glue, Athena, QuickSight, Docker, Redis, Git, GitHub, Vercel, n8n, Apache Airflow
 - Certifications:

@@ -3,12 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #0a0f1e;
-  --bg-secondary: #0d1530;
-  --accent: #00d4ff;
-  --accent-dim: #00d4ff33;
-  --text-primary: #e2e8f0;
-  --text-muted: #94a3b8;
+  /* Retro paper palette */
+  --paper: #ffffff;
+  --paper-card: #ffffff;
+  --grid-line: rgba(23, 23, 23, 0.06);
+  --ink: #16130e;
+  --muted: #52525b;
+  --orange: #e2572b;
+  --teal: #567e88;
+  --teal-deep: #4a707a;
 }
 
 * {
@@ -22,40 +25,12 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* ── Layered section card stack ─────────────────── */
-
-/* Every section after Hero enters as a raised card */
-section:not(#hero) {
-  position: relative;
-  border-radius: 24px 24px 0 0;
-  margin-top: -24px;
-  box-shadow: 0 -8px 48px rgba(0, 0, 0, 0.55);
-  will-change: transform;
-}
-
-/* Incrementing z-index so each section covers the previous */
-#about         { z-index: 2;  }
-#experience    { z-index: 3;  }
-#projects      { z-index: 4;  }
-#case-studies  { z-index: 5;  }
-#testimonials  { z-index: 6;  }
-#expertise     { z-index: 7;  }
-#skills        { z-index: 8;  }
-#certifications{ z-index: 9;  }
-#contact       { z-index: 10; }
-
 /* ── Mobile responsiveness ──────────────────────── */
 @media (max-width: 640px) {
   /* Reduce section vertical padding on small screens */
   section {
     padding-top: 4rem !important;
     padding-bottom: 4rem !important;
-  }
-
-  /* Smaller overlap radius on mobile */
-  section:not(#hero) {
-    border-radius: 16px 16px 0 0;
-    margin-top: -16px;
   }
 
   /* Section headings smaller on mobile */
@@ -65,11 +40,30 @@ section:not(#hero) {
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  /* Graph-paper grid background */
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 26px 26px;
+  color: var(--ink);
   font-family: "DM Sans", sans-serif;
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+/* Teal band section — grid carries through in a darker tone */
+.band-teal {
+  background-color: var(--teal);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Black band (footer) */
+.band-ink {
+  background-color: #121214;
 }
 
 /* Scrollbar */
@@ -77,55 +71,55 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--paper);
 }
 ::-webkit-scrollbar-thumb {
-  background: #00d4ff44;
+  background: #e2572b88;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: var(--orange);
 }
 
 /* Selection */
 ::selection {
-  background: #00d4ff33;
-  color: #00d4ff;
+  background: #e2572b33;
+  color: #e2572b;
 }
 
 /* Utility classes */
 .section-heading {
-  @apply font-sora text-3xl md:text-4xl font-bold text-white mb-2;
+  @apply font-sora text-3xl md:text-4xl font-extrabold text-[#16130e] mb-2;
+}
+
+.band-teal .section-heading,
+.band-ink .section-heading {
+  @apply text-[#ffffff];
 }
 
 .section-subheading {
-  @apply text-cyan-400 font-sora text-sm font-semibold uppercase tracking-widest mb-4;
+  @apply text-[#e2572b] font-sora text-sm font-bold uppercase tracking-widest mb-4;
 }
 
-.cyan-underline {
-  @apply relative inline-block;
+/* Retro pill buttons */
+.btn-ink {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#16130e] text-[#ffffff] font-sora font-bold text-sm uppercase tracking-wide hover:bg-[#e2572b] hover:text-[#ffffff] transition-all duration-200 hover:-translate-y-0.5;
 }
 
-.cyan-underline::after {
-  content: "";
-  @apply absolute bottom-0 left-0 h-[3px] bg-cyan-400 rounded-full;
-  width: 60%;
+.btn-outline-ink {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border-2 border-[#16130e] text-[#16130e] font-sora font-bold text-sm uppercase tracking-wide hover:bg-[#16130e] hover:text-[#ffffff] transition-all duration-200;
 }
 
-/* Glow effects */
+/* Legacy glow classes kept as no-ops so stray usages don't break the look */
 .glow-text {
-  text-shadow: 0 0 30px #00d4ff66, 0 0 60px #00d4ff33;
+  text-shadow: none;
 }
 
 .glow-border {
-  box-shadow: 0 0 20px #00d4ff22, inset 0 0 20px #00d4ff05;
+  box-shadow: none;
 }
 
-.glow-border:hover {
-  box-shadow: 0 0 30px #00d4ff44, 0 0 60px #00d4ff22;
-}
-
-/* Noise texture overlay for depth */
+/* Noise texture overlay for paper depth */
 .noise-overlay::before {
   content: "";
   position: fixed;
@@ -133,14 +127,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.02;
+  opacity: 0.03;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   z-index: 9999;
-}
-
-/* Grid dot background */
-.grid-bg {
-  background-image: radial-gradient(circle, #00d4ff15 1px, transparent 1px);
-  background-size: 40px 40px;
 }

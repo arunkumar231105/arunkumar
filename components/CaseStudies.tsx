@@ -124,31 +124,31 @@ const WWW = [
     key: "what" as const,
     label: "What",
     letter: "W",
-    accent: "cyan",
-    border: "border-cyan-400/15",
-    bg: "bg-cyan-400/5",
-    badge: "bg-cyan-400 text-[#0a0f1e]",
-    text: "text-cyan-400",
+    accent: "orange",
+    border: "border-[#e2572b]/30",
+    bg: "bg-[#e2572b]/5",
+    badge: "bg-[#e2572b] text-[#ffffff]",
+    text: "text-[#e2572b]",
   },
   {
     key: "why" as const,
     label: "Why",
     letter: "W",
-    accent: "blue",
-    border: "border-blue-400/15",
-    bg: "bg-blue-400/5",
-    badge: "bg-blue-400 text-[#0a0f1e]",
-    text: "text-blue-400",
+    accent: "teal",
+    border: "border-[#567e88]/40",
+    bg: "bg-[#567e88]/10",
+    badge: "bg-[#567e88] text-[#ffffff]",
+    text: "text-[#567e88]",
   },
   {
     key: "where" as const,
     label: "Where",
     letter: "W",
-    accent: "purple",
-    border: "border-purple-400/15",
-    bg: "bg-purple-400/5",
-    badge: "bg-purple-400 text-[#0a0f1e]",
-    text: "text-purple-400",
+    accent: "ink",
+    border: "border-[#16130e]/20",
+    bg: "bg-[#16130e]/5",
+    badge: "bg-[#16130e] text-[#ffffff]",
+    text: "text-[#16130e]",
   },
 ];
 
@@ -158,8 +158,8 @@ export default function CaseStudies() {
   const study = caseStudies[active];
 
   return (
-    <section id="case-studies" className="py-28 px-6 bg-[#0a0f1e] relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+    <section id="case-studies" className="py-28 px-6 relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#e2572b]/40 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
@@ -172,7 +172,7 @@ export default function CaseStudies() {
         >
           <p className="section-subheading">Deep Dives</p>
           <h2 className="section-heading">
-            Case <span className="text-cyan-400">Studies</span>
+            Case <span className="text-[#e2572b]">Studies</span>
           </h2>
         </motion.div>
 
@@ -190,8 +190,8 @@ export default function CaseStudies() {
               onClick={() => setActive(i)}
               className={`px-4 py-2 rounded-xl text-xs font-dm font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                 active === i
-                  ? "bg-cyan-400 text-[#0a0f1e] font-semibold shadow-lg shadow-cyan-400/20"
-                  : "border border-white/10 text-slate-400 hover:border-cyan-400/30 hover:text-cyan-400 bg-white/[0.02]"
+                  ? "bg-[#16130e] text-[#ffffff] font-semibold"
+                  : "border-2 border-[#16130e]/15 text-[#52525b] hover:border-[#e2572b]/60 hover:text-[#e2572b] bg-[#ffffff]"
               }`}
             >
               {cs.name}
@@ -207,17 +207,17 @@ export default function CaseStudies() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3 }}
-            className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 md:p-8"
+            className="rounded-2xl border-2 border-[#16130e]/10 bg-[#ffffff] p-6 md:p-8"
           >
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-8 pb-6 border-b border-white/5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-8 pb-6 border-b border-[#16130e]/10">
               <div>
-                <h3 className="font-sora text-xl md:text-2xl font-bold text-white mb-1.5">
+                <h3 className="font-sora text-xl md:text-2xl font-bold text-[#16130e] mb-1.5">
                   {study.name}
                 </h3>
-                <p className="font-dm text-slate-400 text-sm max-w-xl">{study.tagline}</p>
+                <p className="font-dm text-[#52525b] text-sm max-w-xl">{study.tagline}</p>
               </div>
-              <span className="text-xs font-dm px-3 py-1.5 rounded-full bg-white/5 text-slate-500 border border-white/5 self-start whitespace-nowrap flex-shrink-0">
+              <span className="text-xs font-dm px-3 py-1.5 rounded-full bg-[#16130e]/5 text-[#71717a] border border-[#16130e]/15 self-start whitespace-nowrap flex-shrink-0">
                 {study.period}
               </span>
             </div>
@@ -236,10 +236,10 @@ export default function CaseStudies() {
                       {label}
                     </p>
                   </div>
-                  <p className="font-sora text-sm font-semibold text-white mb-2 leading-snug">
+                  <p className="font-sora text-sm font-semibold text-[#16130e] mb-2 leading-snug">
                     {study[key].headline}
                   </p>
-                  <p className="font-dm text-xs text-slate-400 leading-relaxed">
+                  <p className="font-dm text-xs text-[#52525b] leading-relaxed">
                     {study[key].detail}
                   </p>
                 </div>
@@ -248,37 +248,37 @@ export default function CaseStudies() {
 
             {/* Architecture */}
             <div className="mb-6">
-              <p className="font-sora text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-2">
+              <p className="font-sora text-[11px] font-semibold text-[#71717a] uppercase tracking-widest mb-2">
                 System Architecture
               </p>
-              <div className="px-4 py-3 rounded-xl bg-[#060a15] border border-cyan-400/10 overflow-x-auto">
-                <p className="font-mono text-xs text-cyan-400/60 whitespace-nowrap tracking-wide">
+              <div className="px-4 py-3 rounded-xl bg-[#16130e] overflow-x-auto">
+                <p className="font-mono text-xs text-[#ffffff]/70 whitespace-nowrap tracking-wide">
                   {study.architecture}
                 </p>
               </div>
             </div>
 
             {/* Outcome */}
-            <div className="flex items-start gap-3 mb-6 p-4 rounded-xl bg-white/[0.02] border border-white/5">
-              <span className="text-cyan-400 flex-shrink-0 text-sm mt-0.5">◆</span>
+            <div className="flex items-start gap-3 mb-6 p-4 rounded-xl bg-[#16130e]/5 border border-[#16130e]/10">
+              <span className="text-[#e2572b] flex-shrink-0 text-sm mt-0.5">◆</span>
               <div>
-                <p className="font-sora text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-1">
+                <p className="font-sora text-[11px] font-semibold text-[#71717a] uppercase tracking-widest mb-1">
                   Outcome
                 </p>
-                <p className="font-dm text-sm text-slate-300 leading-relaxed">{study.outcome}</p>
+                <p className="font-dm text-sm text-[#52525b] leading-relaxed">{study.outcome}</p>
               </div>
             </div>
 
             {/* Stack */}
             <div>
-              <p className="font-sora text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-3">
+              <p className="font-sora text-[11px] font-semibold text-[#71717a] uppercase tracking-widest mb-3">
                 Stack
               </p>
               <div className="flex flex-wrap gap-2">
                 {study.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-xs font-dm px-2.5 py-1 rounded-md bg-cyan-400/5 text-cyan-400/80 border border-cyan-400/10"
+                    className="text-xs font-dm px-2.5 py-1 rounded-md bg-[#16130e]/5 text-[#3f3f46] border border-[#16130e]/15"
                   >
                     {t}
                   </span>
