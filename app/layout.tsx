@@ -19,6 +19,9 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arunkumar.works"),
+  alternates: {
+    canonical: "/",
+  },
   title: "Arun Kumar - Data Engineer & Backend Developer",
   description:
     "Software Engineering student at SZABIST with hands-on experience in data engineering, ETL pipelines, backend development, and AI-powered systems. Oracle Cloud GenAI Certified.",
@@ -76,6 +79,47 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data so Google understands who this site is about and can show
+// a rich result (name, job title, socials) for name searches.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Arun Kumar",
+  url: "https://arunkumar.works",
+  image: "https://arunkumar.works/arun-kumar.jpeg",
+  jobTitle: "Data Engineer & Backend Developer",
+  worksFor: [
+    { "@type": "Organization", name: "Technocas" },
+    { "@type": "Organization", name: "Zank AI" },
+  ],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "SZABIST",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Karachi",
+    addressCountry: "PK",
+  },
+  email: "mailto:arunkumarjuswani12@gmail.com",
+  sameAs: [
+    "https://github.com/arunkumar231105",
+    "https://www.linkedin.com/in/arun-kumar-b578a128b/",
+  ],
+  knowsAbout: [
+    "Data Engineering",
+    "ETL Pipelines",
+    "Web Scraping",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Snowflake",
+    "Apache Airflow",
+    "Backend Development",
+    "AI Integration",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -87,6 +131,10 @@ export default function RootLayout({
       className={`scroll-smooth ${sora.variable} ${dmSans.variable}`}
     >
       <body className="antialiased noise-overlay">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
