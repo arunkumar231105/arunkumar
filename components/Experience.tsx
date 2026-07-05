@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
 
@@ -134,6 +135,10 @@ function ExperienceCard({
   index: number;
   globalInView: boolean;
 }) {
+  // On mobile only the first 3 bullets show until expanded; desktop always shows all
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = exp.bullets.length > 3;
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -183,12 +188,25 @@ function ExperienceCard({
         {/* Bullets */}
         <ul className="space-y-2 mb-4">
           {exp.bullets.map((b, bi) => (
-            <li key={bi} className="flex gap-3 text-sm font-dm text-[#e6eef0] leading-relaxed">
+            <li
+              key={bi}
+              className={`${
+                bi >= 3 && !expanded ? "hidden sm:flex" : "flex"
+              } gap-3 text-sm font-dm text-[#e6eef0] leading-relaxed`}
+            >
               <span className="text-[#ffffff] mt-1 flex-shrink-0">▹</span>
               {b}
             </li>
           ))}
         </ul>
+        {hasMore && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="sm:hidden mb-4 text-xs font-sora font-bold uppercase tracking-wide text-[#ffd8c2] underline underline-offset-4"
+          >
+            {expanded ? "Show less" : `Show ${exp.bullets.length - 3} more`}
+          </button>
+        )}
 
         {/* Workflow line */}
         {exp.workflow && (

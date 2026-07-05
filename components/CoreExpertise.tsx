@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
 import {
@@ -91,45 +92,78 @@ export default function CoreExpertise() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {areas.map((area, i) => (
-            <motion.div
-              key={area.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`group relative p-6 rounded-2xl border-2 border-[#16130e]/10 bg-[#ffffff] ${area.border} hover:bg-[#f7f7f5] transition-all duration-300`}
-            >
-              {/* Icon */}
-              <div
-                className={`w-11 h-11 rounded-xl border flex items-center justify-center mb-5 ${area.icon}`}
-              >
-                <area.Icon className="w-5 h-5" />
-              </div>
-
-              {/* Title */}
-              <h3 className="font-sora text-base font-semibold text-[#16130e] mb-3 leading-snug">
-                {area.title}
-              </h3>
-
-              {/* Description */}
-              <p className="font-dm text-sm text-[#52525b] leading-relaxed mb-5">
-                {area.description}
-              </p>
-
-              {/* Signal pills */}
-              <div className="flex flex-wrap gap-1.5 mt-auto">
-                {area.signals.map((s) => (
-                  <span
-                    key={s}
-                    className={`text-[11px] font-dm px-2 py-0.5 rounded-md border ${area.pill}`}
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+            <ExpertiseCard key={area.title} area={area} index={i} inView={inView} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function ExpertiseCard({
+  area,
+  index,
+  inView,
+}: {
+  area: (typeof areas)[number];
+  index: number;
+  inView: boolean;
+}) {
+  // Mobile-only accordion: description and pills stay collapsed until tapped;
+  // from the sm breakpoint up the card is always fully expanded.
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      onClick={() => setOpen(!open)}
+      className={`group relative p-6 rounded-2xl border-2 border-[#16130e]/10 bg-[#ffffff] ${area.border} hover:bg-[#f7f7f5] transition-all duration-300 cursor-pointer sm:cursor-default`}
+    >
+      {/* Mobile expand chevron */}
+      <svg
+        className={`sm:hidden absolute top-6 right-5 w-4 h-4 text-[#52525b] transition-transform duration-200 ${
+          open ? "rotate-180" : ""
+        }`}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+
+      {/* Icon */}
+      <div
+        className={`w-11 h-11 rounded-xl border flex items-center justify-center mb-3 sm:mb-5 ${area.icon}`}
+      >
+        <area.Icon className="w-5 h-5" />
+      </div>
+
+      {/* Title */}
+      <h3 className="font-sora text-base font-semibold text-[#16130e] leading-snug pr-8 sm:pr-0 sm:mb-3">
+        {area.title}
+      </h3>
+
+      {/* Collapsible on mobile, always visible from sm up */}
+      <div className={`${open ? "block" : "hidden"} sm:block`}>
+        <p className="font-dm text-sm text-[#52525b] leading-relaxed mb-5 mt-3 sm:mt-0">
+          {area.description}
+        </p>
+
+        {/* Signal pills */}
+        <div className="flex flex-wrap gap-1.5 mt-auto">
+          {area.signals.map((s) => (
+            <span
+              key={s}
+              className={`text-[11px] font-dm px-2 py-0.5 rounded-md border ${area.pill}`}
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 }

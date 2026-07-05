@@ -39,6 +39,26 @@ html {
   }
 }
 
+/* ── Mobile performance ─────────────────────────── */
+@media (max-width: 767px) {
+  /* The full-screen SVG noise texture is GPU-expensive on phones —
+     drop it entirely; the grid alone carries the paper look. */
+  .noise-overlay::before {
+    display: none;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   /* Graph-paper grid background */
   background-color: var(--paper);
